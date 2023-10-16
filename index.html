@@ -9,20 +9,23 @@
 </head>
 <body>
     <div class="container">
-        <div class="form">
+        <form class="form">
             <div class="inputBox">
-                <input type="text" required="required">
+                <input type="text" required="required" id="task">
                 <span>Task</span>  
             </div>
             <div class="inputBox">
-                <input type="text" required="required">
-                <span>Due Date</span>  
+                <input type="text" required="required" id="department">
+                <span>Department</span>  
             </div>
             <div class="inputBox">
-                <input type="text" required="required">
-                <span>Department</span>  
-            </div>  
-        </div>
+                <input type="date" required="required" id="dueDate">
+                <span class="hide">Due date</span>  
+            </div> 
+            <div class="btn">
+                <button type="submit" class="button">Submit</button>
+            </div> 
+        </form>
     </div>
     
 </body>

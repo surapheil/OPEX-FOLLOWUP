@@ -1,27 +1,44 @@
 // weekly tasks storage on array
-const targets = [{plumy:'sura',dueDate: '12/20/23',dept:'tech'},
-{plumy:'das',dueDate:'12/12/2023',dept:'quality'}];
+const targets = [];
 
-console.log(targets.length);
+//console.log(targets.length);
 
 
 //constructor 
-
-function weeklyTasks (task,dueDate,department){
+function weeklyTasks (task,department,dueDate){
         this.task = task;
-        this.dueDate = dueDate;
         this.department = department;
+        this.dueDate = dueDate;
 }
 
-const duty = new weeklyTasks();
+//calling the form 
+const form = document.querySelector('form');
 
-function addTasks(){
+form.addEventListener('submit',(e)=>{
+    e.preventDefault();
+
+    const Task = document.getElementById('task').value;
+    const Department = document.getElementById('department').value;
+    const Duedate = document.getElementById('dueDate').value;
+
+
+
+//creating object based on the constructor function and  adding the form inputs
+// to the created object
+    const duty = new weeklyTasks(Task,Department,Duedate);
+    console.log(duty);
+//adding the the new object to the targets array
     targets.push(duty);
-}
+    console.log(targets);
+//clearing the form to add new entries
+    form.reset()
+    
+});
 
-function showTasks(){
-    for(let i=0; i < targets.length;i++){
-        console.table(targets[i]);
-    }
-}
-showTasks();
+
+// function showTasks(){
+//     for(let i=0; i < targets.length;i++){
+//         console.table(targets[i]);
+//     }
+// }
+// showTasks();
