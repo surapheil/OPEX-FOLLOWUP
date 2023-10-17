@@ -17,21 +17,32 @@ const form = document.querySelector('form');
 form.addEventListener('submit',(e)=>{
     e.preventDefault();
 
-    const Task = document.getElementById('task').value;
-    const Department = document.getElementById('department').value;
-    const Duedate = document.getElementById('dueDate').value;
+    //retriving the form input via DOM
+        const Task = document.getElementById('task').value;
+        const Department = document.getElementById('department').value;
+        const Duedate = document.getElementById('dueDate').value;
 
 
 
-//creating object based on the constructor function and  adding the form inputs
-// to the created object
-    const duty = new weeklyTasks(Task,Department,Duedate);
-    console.log(duty);
-//adding the the new object to the targets array
-    targets.push(duty);
-    console.log(targets);
-//clearing the form to add new entries
-    form.reset()
+    //creating object based on the constructor function and  adding the form inputs
+    // to the created object
+        const duty = new weeklyTasks(Task,Department,Duedate);
+        console.log(duty);
+    //adding the the new object to the targets array
+        targets.push(duty);
+        console.log(targets);
+
+    //converting to string for storing
+    let dataTargets = JSON.stringify(targets);
+    
+    //storing in the local storage
+    localStorage.setItem('form',dataTargets);
+
+    let deStringify = JSON.parse(localStorage.getItem('form'));
+    console.log(deStringify);
+
+    //clearing the form to add new entries
+        form.reset()
     
 });
 
