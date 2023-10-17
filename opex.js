@@ -1,5 +1,5 @@
 // weekly tasks storage on array
-const targets = [];
+let targets = [];
 
 //console.log(targets.length);
 
@@ -14,23 +14,31 @@ function weeklyTasks (task,department,dueDate){
 //calling the form 
 const form = document.querySelector('form');
 
+// Get the data from local storage
+const data = localStorage.getItem('form');
+
+// If the data is not empty, parse it and add it to the targets array
+if (data) {
+  targets = JSON.parse(data);
+}
+
+console.log(targets);
+
 form.addEventListener('submit',(e)=>{
     e.preventDefault();
 
     //retriving the form input via DOM
-        const Task = document.getElementById('task').value;
-        const Department = document.getElementById('department').value;
-        const Duedate = document.getElementById('dueDate').value;
-
-
+    const Task = document.getElementById('task').value;
+    const Department = document.getElementById('department').value;
+    const Duedate = document.getElementById('dueDate').value;
 
     //creating object based on the constructor function and  adding the form inputs
-    // to the created object
-        const duty = new weeklyTasks(Task,Department,Duedate);
-        console.log(duty);
+    //to the created object
+    const duty = new weeklyTasks(Task,Department,Duedate);
+    console.log(duty);
     //adding the the new object to the targets array
-        targets.push(duty);
-        console.log(targets);
+    targets.push(duty);
+    console.log(targets);
 
     //converting to string for storing
     let dataTargets = JSON.stringify(targets);
@@ -38,12 +46,16 @@ form.addEventListener('submit',(e)=>{
     //storing in the local storage
     localStorage.setItem('form',dataTargets);
 
-    let deStringify = JSON.parse(localStorage.getItem('form'));
-    console.log(deStringify);
+    // let data = localStorage.getItem('form');
+    // console.log(data);
+    // if (data){
+    //     targets = (JSON.parse(data));
+    // }
+    console.log(targets);
 
     //clearing the form to add new entries
-        form.reset()
-    
+    form.reset()
+        
 });
 
 
